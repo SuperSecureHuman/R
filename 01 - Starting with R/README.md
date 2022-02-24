@@ -114,6 +114,16 @@ We use `str()` to find the structure of a dateframe.
 ```
 
 
+### Creating a Data Frame
+
+You can create a data frame using the data.frame function. Here is a quick example:
+
+```R
+temp <- c(35, 88, 42, 84, 81, 30)
+city <- c("Beijing", "Lagos", "Paris", "Rio de Janeiro", "San Juan", "Toronto")
+city_temps <- data.frame(name = city, temperature = temp)
+
+```
 
 ## Bunch of code for you to try out
 
