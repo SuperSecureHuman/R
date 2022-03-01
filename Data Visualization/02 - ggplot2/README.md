@@ -109,3 +109,158 @@ p + geom_point(size = 3) +
 By default, ggplot scales the data to fit the plot. But in this case, we need a log plot. Lets do that
 
 Convert the x-axis to log scale with scale_x_continuous(trans = "log10") or scale_x_log10(). Similar functions exist for the y-axis.
+
+```R
+#Converting to log scale
+# log base 10 scale the x-axis and y-axis
+p + geom_point(size = 3) +
+    geom_text(nudge_x = 0.05) +
+    scale_x_continuous(trans = "log10") +
+    scale_y_continuous(trans = "log10")
+    
+# efficient log scaling of the axes
+p + geom_point(size = 3) +
+    #Since the plot is smaller, we use a smaller nudge
+    geom_text(nudge_x = 0.075) +
+    #Here is the short method of the same scale
+    scale_x_log10() +
+    scale_y_log10()
+```
+
+Since log_10 is a really common scale, ggplot has a predifined scale called `scale_x_log10()` and `scale_y_log10()` to make it easier.
+
+## Labels and Titles
+
+Add axis titles with `xlab()` and `ylab()` functions. Add a plot title with the `ggtitle()` function.
+
+Lets see an example
+
+```R
+#We are using the previous plot
+
+p + geom_point(size = 3) +
+    geom_text(nudge_x = 0.075) +
+    scale_x_log10() +
+    scale_y_log10() +
+    #X-axis label
+    xlab("Population in millions (log scale)") +
+    #Y-axis label
+    ylab("Total number of murders (log scale)") +
+    #Plot title
+    ggtitle("US Gun Murders in 2010")
+```
+
+## Coloring the plot
+
+Coloring the plot is done usually by passing an argument within the layer you want to colour.
+
+```R
+...
+...
+# make all points blue
+p + geom_point(size = 3, color = "blue")
+
+# color points by region
+p + geom_point(aes(col = region), size = 3)
+...
+...
+```
+
+## Drawing a line 
+
+Now we will try to add a line, that will show the average murder rate of the dataset.
+
+```R
+# define average murder rate
+r <- murders %>%
+    summarize(rate = sum(total) / sum(population) * 10^6) %>%
+    pull(rate)
+    
+# basic line with average murder rate for the country
+p <- p + geom_point(aes(col = region), size = 3) +
+    geom_abline(intercept = log10(r))    # slope is default of 1
+    
+# change line to dashed and dark grey, line under points
+p + 
+    geom_abline(intercept = log10(r), lty = 2, color = "darkgrey") +
+    geom_point(aes(col = region), size = 3)
+```
+
+## Additonal Touches
+
+The style of a ggplot graph can be changed using the `theme()` function.
+
+The `ggthemes` package adds additional themes.
+
+Sometimes, when adding labels, they might overlap with other labels. To avoid this, we use a layer named `geom_text_repel()` provided by ggrepel library.
+
+You can now look at the complete plot here - [Complete Plot](./5.Theming.R)
+
+# Other plots in ggplot
+
+## Histograms
+
+Histogram's layer is `geom_histogram()`
+
+```R
+# load heights data
+library(tidyverse)
+library(dslabs)
+data(heights)
+
+# define p
+p <- heights %>%
+    filter(sex == "Male") %>%
+    ggplot(aes(x = height))
+    
+# basic histograms
+p + geom_histogram()
+p + geom_histogram(binwidth = 1)
+
+# histogram with blue fill, black outline, labels and title
+p + geom_histogram(binwidth = 1, fill = "blue", col = "black") +
+    xlab("Male heights in inches") +
+    ggtitle("Histogram")
+```
+
+## Smooth density plots
+
+```R
+library(tidyverse)
+library(dslabs)
+data(heights)
+
+# define p
+p <- heights %>%
+    filter(sex == "Male") %>%
+    ggplot(aes(x = height))
+
+p + geom_density()
+p + geom_density(fill = "blue")
+```
+
+## Quantile-quantile plots
+
+```R
+library(tidyverse)
+library(dslabs)
+data(heights)
+
+# basic QQ-plot
+p <- heights %>% filter(sex == "Male") %>%
+    ggplot(aes(sample = height))
+p + geom_qq()
+
+# QQ-plot against a normal distribution with same mean/sd as data
+params <- heights %>%
+    filter(sex == "Male") %>%
+    summarize(mean = mean(height), sd = sd(height))
+    p + geom_qq(dparams = params) +
+    geom_abline()
+    
+# QQ-plot of scaled data against the standard normal distribution
+heights %>%
+    ggplot(aes(sample = scale(height))) +
+    geom_qq() +
+    geom_abline()
+```
