@@ -2,7 +2,7 @@
 
 Vectors is the basic unit in R.
 
-## Creating Vectors
+### Creating Vectors
 
 One way to create vectors is to use the `c` function.
 
@@ -28,7 +28,7 @@ names(codes) <- country
 
 ![](assets/vector_example.png)
 
-## Creating Sequences
+### Creating Sequences
 
 We use `seq()` to generate number sequences.
 
@@ -43,7 +43,7 @@ Note: If you want consecutive numbers, use can use this shortcut `1:10` --> `sta
 
 ![](assets/seq.png)
 
-## Accessing Elements in a Vector
+### Accessing Elements in a Vector
 
 We use [] to access stuff in vectors
 
@@ -71,7 +71,7 @@ x <- seq(0, 100, length.out = 5)
 
 produces the numbers `0, 25, 50, 75, 100`.
 
-# Vector Coercion
+## Vector Coercion
 
 When we define a vector, but with non-same data types, R tries to guess the data type of the elements.
 
@@ -87,7 +87,7 @@ Here, the variable x included char and int.
 
 But when storing the variable, it took all as strings
 
-## Forcing Coercion
+### Forcing Coercion
 
 You can use `as.character()` to force the coercion of a vector to character.
 
@@ -100,7 +100,7 @@ You can use `as.character()` to force the coercion of a vector to character.
 [1] "character"
 ```
 
-# Sorting
+## Sorting
 
 We will be using the murder dataset here.
 
@@ -130,7 +130,7 @@ sort(murders$total)
 [1] 2 3 1 5 4
 ```
 
-# Vector Arithmetic
+## Vector Arithmetic
 
 Arithematic operations are performed elemntwise in R.
 

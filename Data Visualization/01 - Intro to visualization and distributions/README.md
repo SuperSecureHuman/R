@@ -1,4 +1,4 @@
-# Data types
+## Data types
 
 There can be 2 main types of data, that we deal in visualizing:
 
@@ -12,7 +12,7 @@ Numerical data take a variety of numeric values.
 * Continuous variables can take any value.
 * Discrete variables are limited to sets of specific values.
 
-# Distribution
+## Distribution
 
 A distribution is a function or description that shows the possible values of a variable and how often those values occur.
 
@@ -50,7 +50,7 @@ We will deal about histrogram later on.
 
 A histogram divides data into non-overlapping bins of the same size and plots the counts of number of values that fall in that interval.
 
-# Smooth density plots
+## Smooth density plots
 
 Smooth density plots can be thought of as histograms where the bin width is extremely or infinitely small. The smoothing function makes estimates of the true continuous trend of the data given the available sample of data points.
 
@@ -62,7 +62,7 @@ The y-axis is scaled so that the area under the density curve sums to 1. This me
 
 An advantage of smooth densities over histograms is that densities are easier to compare visually.
 
-# Normal Distribution
+## Normal Distribution
 
 Normal distributions are the most common type of distribution. They are characterized by a mean and a standard deviation.
 
@@ -79,11 +79,11 @@ The normal distribution:
 * Is defined completely by its mean and standard deviation
 * Always has the same proportion of observations within a given distance of the mean
 
-## Standard units
+### Standard units
 
 For data that are approximately normal, standard units describe the number of standard deviations an observation is from the mean. Standard units are denoted by the variable z  and are also known as z-scores.
 
-## The 68-95-99.7 Rule
+### The 68-95-99.7 Rule
 
 The normal distribution is associated with the 68-95-99.7 rule. This rule describes the probability of observing events within a certain number of standard deviations of the mean.
 
@@ -92,7 +92,7 @@ The normal distribution is associated with the 68-95-99.7 rule. This rule descri
 ![](assets/the_rule.png)
 
 
-# The Normal CDF and pnorm
+## The Normal CDF and pnorm
 
 The normal distribution has a mathematically defined CDF which can be computed in R with the function pnorm().
 
@@ -108,7 +108,7 @@ With rounded data, the normal approximation is particularly useful when computin
 
 
 
-# Quantiles
+## Quantiles
 
 Quantiles are cutoff points that divide a dataset into intervals with set probabilities. The q th quantile is the value at which q % of the observations are equal to or less than that value.
 
@@ -119,7 +119,7 @@ You can use the `quantile()` function to compute quantiles.
 quantile(data,q)
 ```
 
-## Percentiles
+### Percentiles
 
 Percentiles are the quantiles that divide a dataset into 100 intervals each with 1% probability. You can determine all percentiles of a dataset data like this:
 
@@ -128,14 +128,14 @@ p <- seq(0.01, 0.99, 0.01)
 quantile(data, p)
 ```
 
-## Quartiles
+### Quartiles
 
 Quartiles divide a dataset into 4 parts each with 25% probability. They are equal to the 25th, 50th and 75th percentiles. The 25th percentile is also known as the 1st quartile, the 50th percentile is also known as the median, and the 75th percentile is also known as the 3rd quartile.
 
 The summary() function returns the minimum, quartiles and maximum of a vector.
 
 
-## Examples
+### Examples
 
 ```R
 library(dslabs)
@@ -157,7 +157,7 @@ percentiles[names(percentiles) == "25%"]
 percentiles[names(percentiles) == "75%"]
 ```
 
-# Finding quantiles with qnorm()
+## Finding quantiles with qnorm()
 
 The qnorm() function gives the theoretical value of a quantile with probability p of observing a value equal to or less than that quantile value given a normal distribution with mean mu and standard deviation sigma:
 
@@ -168,7 +168,7 @@ qnorm(p, mu, sigma)
 By default, mu = 0 and sigma = 1. 
 
 
-## Relation to pnorm
+### Relation to pnorm
 
 The pnorm() function gives the probability that a value from a standard normal distribution will be less than or equal to a z-score value z. Consider:
 
@@ -183,7 +183,7 @@ qnorm() and pnorm() are inverse functions:
 pnorm(qnorm(0.025))  = 0.025
 
 
-# Quantile-Quantile Plots
+## Quantile-Quantile Plots
 
 Quantile-quantile plots, or QQ-plots, are used to check whether distributions are well-approximated by a normal distribution.
 
@@ -197,7 +197,7 @@ Now we will apply this, to out male heights dataset.
 
 Here, you can see that our data points almost fit a straight line. This futher establishes the fact that our data is well suited as a normal distribution with certain parameters.
 
-# Boxplots
+## Boxplots
 
 When data do not follow a normal distribution and cannot be succinctly summarized by only the mean and standard deviation, an alternative is to report a five-number summary: range (ignoring outliers) and the quartiles (25th, 50th, 75th percentile).
 

@@ -35,7 +35,7 @@ print(p)
 #now by printing 'p', you can see a blank graphics being rendered.
 ```
 
-## Layers
+### Layers
 
 In ggplot, graphs are created by adding layers
 
@@ -78,7 +78,7 @@ To determine which aesthetic mappings are required for a geometry, read the help
 
 You can add layers with different aesthetic mappings to the same graph.
 
-### Tweaking our plot further
+#### Tweaking our plot further
 
 ```R
 #Setting the size of the points
@@ -104,7 +104,7 @@ p + geom_point(size = 3) +
 ```
 
 
-## Scale
+### Scale
 
 By default, ggplot scales the data to fit the plot. But in this case, we need a log plot. Lets do that
 
@@ -129,7 +129,7 @@ p + geom_point(size = 3) +
 
 Since log_10 is a really common scale, ggplot has a predifined scale called `scale_x_log10()` and `scale_y_log10()` to make it easier.
 
-## Labels and Titles
+### Labels and Titles
 
 Add axis titles with `xlab()` and `ylab()` functions. Add a plot title with the `ggtitle()` function.
 
@@ -150,7 +150,7 @@ p + geom_point(size = 3) +
     ggtitle("US Gun Murders in 2010")
 ```
 
-## Coloring the plot
+### Coloring the plot
 
 Coloring the plot is done usually by passing an argument within the layer you want to colour.
 
@@ -166,7 +166,7 @@ p + geom_point(aes(col = region), size = 3)
 ...
 ```
 
-## Drawing a line 
+### Drawing a line 
 
 Now we will try to add a line, that will show the average murder rate of the dataset.
 
@@ -186,7 +186,7 @@ p +
     geom_point(aes(col = region), size = 3)
 ```
 
-## Additonal Touches
+### Additonal Touches
 
 The style of a ggplot graph can be changed using the `theme()` function.
 
@@ -196,9 +196,9 @@ Sometimes, when adding labels, they might overlap with other labels. To avoid th
 
 You can now look at the complete plot here - [Complete Plot](./5.Theming.R)
 
-# Other plots in ggplot
+## Other plots in ggplot
 
-## Histograms
+### Histograms
 
 Histogram's layer is `geom_histogram()`
 
@@ -223,7 +223,7 @@ p + geom_histogram(binwidth = 1, fill = "blue", col = "black") +
     ggtitle("Histogram")
 ```
 
-## Smooth density plots
+### Smooth density plots
 
 ```R
 library(tidyverse)
@@ -239,7 +239,7 @@ p + geom_density()
 p + geom_density(fill = "blue")
 ```
 
-## Quantile-quantile plots
+### Quantile-quantile plots
 
 ```R
 library(tidyverse)

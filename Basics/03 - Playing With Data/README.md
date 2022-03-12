@@ -1,4 +1,4 @@
-# Indexing in R
+## Indexing in R
 
 R has powerful tools to perform indexing.
 
@@ -20,7 +20,7 @@ murders$state[index]
 sum(index)
 ```
 
-## Some functions in indexing
+### Some functions in indexing
 
 We will look at 3 functions used in indexing. They are `which`, `match`, and `%in%`.
 
@@ -45,7 +45,7 @@ murder_rate[index]
 
 `%in%` function checks if one array is the subset of another array
 
-# Data Wrangling
+## Data Wrangling
 
 We will be using dplyer package here. Make sure to install them.
 
@@ -75,7 +75,7 @@ new_table <- select(murders, state, region, rate)
 filter(new_table, rate <= 0.71)
 ```
 
-## The pipe operator `%>%`
+### The pipe operator `%>%`
 
 The `%>%` operator is used to chain together functions.
 
@@ -85,7 +85,7 @@ Lets see an example, where we are gonna filter out states with certain murder ra
 murders %>% select(state, region, rate) %>% filter(rate <= 0.71)
 ```
 
-# Creating Data Frames
+## Creating Data Frames
 
 Creating dataframes is straight forward in R. Look at the following example
 
@@ -99,7 +99,7 @@ grades <- data.frame(names = c("John", "Juan", "Jean", "Yao"),
 
 Formerly, the `data.frame()` function turned characters into factors by default. To avoid this, we could utilize the stringsAsFactors argument and set it equal to false. As of R 4.0, it is no longer necessary to include the stringsAsFactors argument, because R no longer turns characters into factors by default.
 
-# Plotting
+## Plotting
 
 Plotting with the inbuilt function is straight forward in R. You just call the function and pass the data you want to plot.
 

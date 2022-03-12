@@ -1,6 +1,10 @@
-We will look at a case study involving data from the Gapminder Foundation about trends in world health and economics.
+
 
 # Case Study: Trends in World Health and Economics
+
+We will look at a case study involving data from the Gapminder Foundation about trends in world health and economics.
+
+## The dataset
 
 The gapmider dataset can be found here
 
