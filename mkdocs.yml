@@ -7,6 +7,7 @@ theme:
     - search.share
     - navigation.instant
     - navigation.tabs
+    - navigation.indexes
     - navigation.top
   
   logo: assets/logo.svg
