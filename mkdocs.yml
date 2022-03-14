@@ -39,4 +39,4 @@ extra:
 
 
 extra_css:
-  - stylesheets/extra.css
+  - assets/extra.css
